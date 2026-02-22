@@ -29,7 +29,7 @@ function resolveSlidesPerView(
     slidesPerView: CarouselProps["slidesPerView"],
     width: number
 ) {
-    if (typeof slidesPerView === "number") return slidesPerView || 1;
+    if (typeof slidesPerView === "number" || !slidesPerView) return slidesPerView || 1;
     // slidesPerView is an object like { 0:1, 640:2, 1024:3 }
     const breakpoints = Object.keys(slidesPerView)
         .map((k) => Number(k))

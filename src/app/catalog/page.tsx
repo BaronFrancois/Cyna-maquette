@@ -5,9 +5,9 @@ import { PRODUCTS } from "@/constant";
 import AppLayout from "@/layout/AppLayout";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 
-export default function Catalog() {
+function CatalogContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -132,5 +132,13 @@ export default function Catalog() {
                 </div>
             </div>
         </AppLayout>
+    );
+}
+
+export default function Catalog() {
+    return (
+        <Suspense>
+            <CatalogContent />
+        </Suspense>
     );
 }

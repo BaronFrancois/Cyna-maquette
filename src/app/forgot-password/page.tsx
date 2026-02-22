@@ -12,23 +12,11 @@ function ForgotPassword() {
     alert("test");
     e.preventDefault();
 
-    api().post("/auth/forgot-password", { email })
-
     try {
-      // Exemple : appel à ton API backend
-    //   const response = await fetch("/api/forgot-password", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email }),
-    //   });
-
-      if (response.ok) {
-        setMessage("Un email de réinitialisation a été envoyé !");
-      } else {
-        setMessage("Erreur : impossible d’envoyer l’email.");
-      }
+      await api().post("/auth/forgot-password", { email });
+      setMessage("Un email de réinitialisation a été envoyé !");
     } catch (error) {
-      setMessage("Une erreur est survenue.");
+      setMessage("Erreur : impossible d’envoyer l’email.");
     }
   };
 

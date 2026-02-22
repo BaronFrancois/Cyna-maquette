@@ -1,3 +1,1 @@
-export const PRODUCTS = [
-    
-]
+export { PRODUCTS, MOCK_USER } from "../constants";

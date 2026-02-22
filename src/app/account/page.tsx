@@ -1,13 +1,18 @@
 "use client";
 
 import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Account() {
-    const auth_token = Cookies.get("auth_token");
+    const router = useRouter();
 
+    useEffect(() => {
+        const auth_token = Cookies.get("auth_token");
+        if (!auth_token) {
+            router.replace("/auth/login");
+        }
+    }, [router]);
 
-    if(!auth_token) {
-        window.location.href = "/auth/login";
-    }
-
+    return null;
 }
